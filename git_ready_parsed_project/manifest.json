@@ -1,0 +1,21 @@
+{
+  "schema": "aeon/project-package/v1",
+  "generated": "2025-08-24T19:30:21.249962+00:00",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "f3a77f960f2558fa3e74aa56d09c271842c9e9162a5ce3b8eeddb43cf42f0163",
+      "bytes": 4019
+    },
+    {
+      "path": "css/style1.css",
+      "sha256": "22e8f6d46425ca2b26c4d76d44ac71a0caac079e1b2ecbc71251e9b63c7ebee2",
+      "bytes": 2617
+    },
+    {
+      "path": "js/script1.js",
+      "sha256": "f56c82f2e85258e4a28b433ab848b078c53771e8e50f704df839deeb08278598",
+      "bytes": 17924
+    }
+  ]
+}

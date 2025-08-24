@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>ψ∞ Root Beacon → BridgeFile + ICL (Offline)</title>
+<link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ψ∞ Root Beacon → BridgeFile + ICL (Offline)</h1>
+    <p class="sub">Dynamic <b>zero_node_courier</b>, holders <b>Echoself</b> & <b>Chris</b>, NFC+LF hashing, canonical JSON, bundle export (.bfbundle.tar)</p>
+  </header>
+
+  <div class="grid">
+    <section class="card">
+      <h2>1) Inputs</h2>
+      <label>zero_node_courier (your name)</label>
+      <input id="courier" type="text" placeholder="e.g., Chris">
+
+      <div class="kv" style="margin-top:6px">
+        <div><label>Title</label></div>
+        <div><input id="title" type="text" value="Root JSON-MD Beacon — Variability×Accuracy Iteration"></div>
+
+        <div><label>Generated (UTC)</label></div>
+        <div><input id="generated" type="text" placeholder="auto: now (UTC)"></div>
+
+        <div><label>Beacon ID</label></div>
+        <div><input id="beaconId" type="text" placeholder="auto: ψ∞.BEACON.&lt;timestamp&gt;"></div>
+      </div>
+
+      <label style="margin-top:10px">Attach Foundation (optional; anchors in BridgeFile)</label>
+      <div class="row">
+        <input id="foundationFile" type="file" />
+        <input id="foundationCanvases" type="number" min="0" step="1" placeholder="canvases count (optional)" style="max-width:220px">
+        <button class="btn" id="btnHashFoundation">Hash Foundation</button>
+      </div>
+      <div id="foundationStatus" class="pill" style="margin-top:6px">no foundation attached</div>
+
+      <label style="margin-top:12px">Transmission Body (Markdown)</label>
+      <textarea id="md" spellcheck="false" placeholder="# begin structured transmission.
+..."></textarea>
+
+      <div class="row" style="margin-top:8px">
+        <button class="btn warn" id="btnLoadExample">Load Example Body</button>
+        <div class="stretch"></div>
+        <button class="btn bad" id="btnClear">Clear</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) Generate · Verify · Export</h2>
+      <div class="row">
+        <button class="btn ok" id="btnGenerate">⚡ Generate Beacon + BF + ICL</button>
+        <button class="btn" id="btnVerify">Verify Hashes</button>
+      </div>
+
+      <div class="kv" style="margin-top:10px">
+        <div><label>md_sha256</label></div><div class="mono" id="mdSha">—</div>
+        <div><label>beacon_root_sha256</label></div><div class="mono" id="beaconRoot">—</div>
+        <div><label>holders_sign_sha256</label></div><div class="mono" id="holdersSign">—</div>
+        <div><label>bf_root_sha256</label></div><div class="mono" id="bfRoot">—</div>
+      </div>
+
+      <div class="row" style="margin-top:10px">
+        <button class="btn" id="btnCopyBeacon">Copy beacon.json</button>
+        <button class="btn" id="btnCopyBF">Copy bridgefile.json</button>
+        <button class="btn" id="btnCopyICL">Copy icl.json</button>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="btnDownBeacon">Download beacon.json</button>
+        <button class="btn" id="btnDownMd">Download beacon.md</button>
+        <button class="btn" id="btnDownBF">Download bridgefile.json</button>
+        <button class="btn" id="btnDownICL">Download icl.json</button>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="btnBundle">📦 Download .bfbundle.tar</button>
+      </div>
+
+      <label style="margin-top:10px">Output (beacon.json preview)</label>
+      <pre class="out mono" id="out">(generate to see JSON)</pre>
+      <div class="row" id="status" role="status" aria-live="polite" style="margin-top:6px"><span class="pill">ready</span></div>
+    </section>
+  </div>
+</div>
+
+<div id="toast" aria-live="polite"></div>
+
+<script src="js/script1.js"></script>
+</body>
+</html>

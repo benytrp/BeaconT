@@ -1,0 +1,8 @@
+{
+  "name": "psi-infinity-beacon-offline",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "python -m http.server 5173"
+  }
+}

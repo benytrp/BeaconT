@@ -434,5 +434,47 @@ $('#btnBundle').addEventListener('click', ()=>{
   toast('.bfbundle.tar downloaded');
 });
 
+/* URL share & prefill helpers */
+function getURLState(){
+  const raw=(location.hash||'').replace(/^#/, '');
+  const q=(location.search||'').replace(/^\?/, '');
+  const all=[raw,q].filter(Boolean).join('&');
+  const out={};
+  if(!all) return out;
+  all.split('&').forEach(p=>{ if(!p) return; const [k,v=''] = p.split('='); out[decodeURIComponent(k)] = decodeURIComponent(v); });
+  return out;
+}
+function b64uEncode(str){
+  const enc = new TextEncoder().encode(str);
+  let b64 = btoa(String.fromCharCode(...enc));
+  return b64.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function b64uDecode(s){
+  s = s.replace(/-/g,'+').replace(/_/g,'/');
+  while(s.length % 4) s+='=';
+  const bin = atob(s);
+  const bytes = Uint8Array.from(bin, c=>c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+async function shareLink(){
+  const courier = ($('#courier').value||'').trim();
+  const title = ($('#title').value||'').trim();
+  const md = NFCLF($('#md').value||'');
+  const payload = { courier, title, body: b64uEncode(md), auto:'1' };
+  const url = (location.origin+location.pathname)+'#'+Object.entries(payload).map(([k,v])=> k+'='+encodeURIComponent(v)).join('&');
+  await (navigator.clipboard?.writeText(url).catch(()=>Promise.reject()) || Promise.reject());
+  toast('Share link copied');
+}
+function prefillFromURL(){
+  const p = getURLState();
+  if(p.courier) $('#courier').value = p.courier;
+  if(p.title)   $('#title').value   = p.title;
+  if(p.body){ try{ $('#md').value = b64uDecode(p.body); }catch(e){} }
+  if(p.auto==='1'){ setTimeout(()=>$('#btnGenerate').click(), 0); }
+}
+$('#btnShare').addEventListener('click', ()=> shareLink());
+$('#btnPrefill').addEventListener('click', ()=> { prefillFromURL(); toast('Prefilled from URL'); });
+window.addEventListener('load', prefillFromURL);
+
 /* Prefill minimal */
 $('#md').value = defaultBody();

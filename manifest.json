@@ -1,11 +1,26 @@
 {
-  "schema": "aeon/project-package/v1",
-  "generated": "2025-08-24T19:30:21.249962+00:00",
+  "schema": "aeon/project-package/v2",
+  "generated": "2025-08-24T20:03:39.584531+00:00",
   "files": [
     {
       "path": "index.html",
-      "sha256": "f3a77f960f2558fa3e74aa56d09c271842c9e9162a5ce3b8eeddb43cf42f0163",
-      "bytes": 4019
+      "sha256": "1abe1bfda9c074f00b1e16712104619f7e00c895e10d3e01cdd8b5a03aef8222",
+      "bytes": 4151
+    },
+    {
+      "path": "README.md",
+      "sha256": "8c031e9a51620332cf01d383a00dbae8e2073866638628d0ba0a34f698c21291",
+      "bytes": 580
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "63ac5c4755bc2b2f47f970dc6787242388eb5bc3edb2cc20428aa624ec6d23be",
+      "bytes": 85
+    },
+    {
+      "path": "package.json",
+      "sha256": "a6c68ff51e46c68293f671cb8a96f81edd671bc78a38cf550025d20823778d3b",
+      "bytes": 144
     },
     {
       "path": "css/style1.css",
@@ -14,8 +29,8 @@
     },
     {
       "path": "js/script1.js",
-      "sha256": "f56c82f2e85258e4a28b433ab848b078c53771e8e50f704df839deeb08278598",
-      "bytes": 17924
+      "sha256": "233b60408675c3c06f6acd7fc9788d948cd1a88ec66498a42dbadef5e6b2976f",
+      "bytes": 19731
     }
   ]
 }

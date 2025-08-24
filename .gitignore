@@ -1,8 +1,9 @@
-# Dependencies / builds
-node_modules/
+# Builds & deps
 dist/
-.build/
+build/
+node_modules/
 .env
+.env.*
 # OS junk
 .DS_Store
 Thumbs.db
